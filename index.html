@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator">
+            <div class="calculator-header">
+                <div class="calculator-brand">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div class="calculator-controls">
+                    <button id="history-toggle" class="control-btn" title="Show History">
+                        <i class="fas fa-history"></i>
+                    </button>
+                    <div class="theme-toggle-container">
+                        <label class="theme-switch" for="theme-checkbox">
+                            <input type="checkbox" id="theme-checkbox">
+                            <div class="slider round">
+                                <i class="fas fa-moon moon-icon"></i>
+                                <i class="fas fa-sun sun-icon"></i>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="history-panel" id="history-panel">
+                <div class="history-header">
+                    <h3>History</h3>
+                    <button id="clear-history" class="clear-history-btn" title="Clear History">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+                <div class="history-list" id="history-list">
+                    <!-- History items will be added here dynamically -->
+                </div>
+            </div>
+            <div class="display">
+                <div class="previous-operand" id="previous-operand"></div>
+                <div class="current-operand" id="current-operand">0</div>
+            </div>
+            
+            <div class="calculator-mode-toggle">
+                <button id="standard-mode" class="mode-btn active">Standard</button>
+                <button id="scientific-mode" class="mode-btn">Scientific</button>
+            </div>
+            
+            <div class="memory-buttons">
+                <button class="memory-btn" id="memory-clear" title="Memory Clear">MC</button>
+                <button class="memory-btn" id="memory-recall" title="Memory Recall">MR</button>
+                <button class="memory-btn" id="memory-add" title="Memory Add">M+</button>
+                <button class="memory-btn" id="memory-subtract" title="Memory Subtract">M-</button>
+                <button class="memory-btn" id="memory-store" title="Memory Store">MS</button>
+            </div>
+            
+            <div class="buttons-grid standard-grid" id="standard-grid">
+                <button class="function-btn" id="clear">AC</button>
+                <button class="function-btn" id="delete">DEL</button>
+                <button class="bracket-btn" id="left-bracket">(</button>
+                <button class="bracket-btn" id="right-bracket">)</button>
+                
+                <button class="number-btn" id="7">7</button>
+                <button class="number-btn" id="8">8</button>
+                <button class="number-btn" id="9">9</button>
+                <button class="operator-btn" id="divide">÷</button>
+                
+                <button class="number-btn" id="4">4</button>
+                <button class="number-btn" id="5">5</button>
+                <button class="number-btn" id="6">6</button>
+                <button class="operator-btn" id="multiply">×</button>
+                
+                <button class="number-btn" id="1">1</button>
+                <button class="number-btn" id="2">2</button>
+                <button class="number-btn" id="3">3</button>
+                <button class="operator-btn" id="subtract">-</button>
+                
+                <button class="number-btn" id="0">0</button>
+                <button class="number-btn" id="decimal">.</button>
+                <button class="operator-btn" id="add">+</button>
+                <button class="equals-btn" id="equals">=</button>
+            </div>
+            
+            <div class="buttons-grid scientific-grid" id="scientific-grid">
+                <button class="function-btn" id="clear-sci">AC</button>
+                <button class="function-btn" id="delete-sci">DEL</button>
+                <button class="bracket-btn" id="left-bracket-sci">(</button>
+                <button class="bracket-btn" id="right-bracket-sci">)</button>
+                <button class="scientific-btn" id="mod">mod</button>
+                
+                <button class="scientific-btn" id="square">x²</button>
+                <button class="scientific-btn" id="cube">x³</button>
+                <button class="scientific-btn" id="sqrt">√</button>
+                <button class="scientific-btn" id="cbrt">∛</button>
+                <button class="scientific-btn" id="power">xʸ</button>
+                
+                <button class="scientific-btn" id="sin">sin</button>
+                <button class="scientific-btn" id="cos">cos</button>
+                <button class="scientific-btn" id="tan">tan</button>
+                <button class="scientific-btn" id="log">log</button>
+                <button class="scientific-btn" id="ln">ln</button>
+                
+                <button class="number-btn" id="7-sci">7</button>
+                <button class="number-btn" id="8-sci">8</button>
+                <button class="number-btn" id="9-sci">9</button>
+                <button class="operator-btn" id="divide-sci">÷</button>
+                <button class="scientific-btn" id="pi">π</button>
+                
+                <button class="number-btn" id="4-sci">4</button>
+                <button class="number-btn" id="5-sci">5</button>
+                <button class="number-btn" id="6-sci">6</button>
+                <button class="operator-btn" id="multiply-sci">×</button>
+                <button class="scientific-btn" id="e">e</button>
+                
+                <button class="number-btn" id="1-sci">1</button>
+                <button class="number-btn" id="2-sci">2</button>
+                <button class="number-btn" id="3-sci">3</button>
+                <button class="operator-btn" id="subtract-sci">-</button>
+                <button class="scientific-btn" id="factorial">x!</button>
+                
+                <button class="number-btn" id="0-sci">0</button>
+                <button class="number-btn" id="decimal-sci">.</button>
+                <button class="operator-btn" id="add-sci">+</button>
+                <button class="equals-btn" id="equals-sci">=</button>
+                <button class="scientific-btn" id="exp">EXP</button>
+            </div>
+        </div>
+        <div class="calculator-footer">
+            <p></p>
+        </div>
+    </div>
+    <div class="particles-container" id="particles-js"></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
