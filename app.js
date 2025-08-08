@@ -886,18 +886,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-/**
- * Overrides the default compute function to include history tracking.
- *
- * This function first stores the current expression to be evaluated. It then calls the original
- * compute function to perform the calculation. If the computation is successful (i.e., the result
- * is not 'Error'), it adds the evaluated expression and its result to the calculation history.
- */
+// Override compute function to add history
 const originalCompute = compute;
 compute = function() {
     const expressionToEvaluate = currentOperand;
     originalCompute();
-
+    
     // Add to history if computation was successful
     if (currentOperand !== 'Error') {
         addToHistory(expressionToEvaluate, currentOperand);
