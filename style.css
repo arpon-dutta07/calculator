@@ -54,7 +54,8 @@ body {
     align-items: center;
     min-height: 100vh; /* Fallback */
     min-height: calc(100 * var(--vh));
-    overflow: hidden;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto; /* Allow vertical scroll if needed */
     position: relative;
     touch-action: manipulation; /* Prevents double-tap zoom on mobile */
 }
@@ -76,8 +77,10 @@ body {
     z-index: 1;
     width: 100%;
     max-width: 100vw;
-    padding: 0 10px;
+    padding: 10px;
     box-sizing: border-box;
+    min-height: 100vh; /* Ensure full height */
+    min-height: calc(100 * var(--vh));
 }
 
 .calculator {
@@ -433,7 +436,7 @@ input:not(:checked) ~ .slider .sun-icon {
 
 /* Make calculator wider when in scientific mode */
 .calculator.scientific-mode {
-    width: 850px; /* Much wider calculator for scientific mode */
+    width: 650px; /* Reasonable width for scientific mode */
     max-width: 95vw;
 }
 
@@ -535,6 +538,13 @@ button:active {
         padding: 20px;
     }
     
+    /* Scientific mode responsive handling */
+    .calculator.scientific-mode {
+        width: 95%;
+        max-width: 95vw;
+        padding: 15px;
+    }
+    
     button {
         padding: 15px 0;
         font-size: 1.3rem;
@@ -552,6 +562,13 @@ button:active {
         padding: 15px;
         margin: 0;
         border-radius: 15px;
+    }
+    
+    /* Ensure scientific mode fits on small screens */
+    .calculator.scientific-mode {
+        width: 100%;
+        max-width: 100vw;
+        padding: 10px;
     }
     
     .calculator-header {
@@ -710,6 +727,29 @@ button:active {
     }
 }
 
+/* Medium screens - tablets and small laptops */
+@media (min-width: 769px) and (max-width: 1199px) {
+    .calculator.scientific-mode {
+        width: 90vw;
+        max-width: 700px;
+        padding: 25px;
+    }
+    
+    .scientific-grid {
+        grid-gap: 12px;
+    }
+    
+    button {
+        padding: 18px 0;
+        font-size: 1.4rem;
+    }
+    
+    .scientific-btn {
+        font-size: 1.1rem;
+        padding: 16px 0;
+    }
+}
+
 /* Desktop optimization */
 @media (min-width: 1200px) {
     .calculator {
@@ -718,7 +758,8 @@ button:active {
     }
     
     .calculator.scientific-mode {
-        width: 950px; /* Even wider for scientific mode on large screens */
+        width: 750px; /* Reasonable width for scientific mode on large screens */
+        max-width: 90vw; /* Ensure it doesn't exceed viewport */
     }
     
     button {
