@@ -8,8 +8,8 @@ const historyList = document.getElementById('history-list');
 const clearHistoryBtn = document.getElementById('clear-history');
 
 // DOM Elements - Standard Calculator
-const numberButtons = document.querySelectorAll('.number-btn');
-const operatorButtons = document.querySelectorAll('.operator-btn');
+const numberButtons = document.querySelectorAll('.standard-grid .number-btn');
+const operatorButtons = document.querySelectorAll('.standard-grid .operator-btn');
 const equalsButton = document.getElementById('equals');
 const clearButton = document.getElementById('clear');
 const deleteButton = document.getElementById('delete');
@@ -833,7 +833,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const sciNumberButtons = document.querySelectorAll('.scientific-grid .number-btn');
     sciNumberButtons.forEach(button => {
         button.addEventListener('click', () => {
-            appendNumber(button.innerText);
+            appendNumber(button.textContent);
             addButtonPressAnimation(button);
         });
     });
@@ -842,7 +842,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const sciOperatorButtons = document.querySelectorAll('.scientific-grid .operator-btn');
     sciOperatorButtons.forEach(button => {
         button.addEventListener('click', () => {
-            appendOperator(button.innerText);
+            chooseOperation(button.textContent);
             addButtonPressAnimation(button);
         });
     });
@@ -850,14 +850,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Scientific mode bracket buttons
     if (document.getElementById('left-bracket-sci')) {
         document.getElementById('left-bracket-sci').addEventListener('click', () => {
-            appendLeftBracket();
+            appendBracket('(');
             addButtonPressAnimation(document.getElementById('left-bracket-sci'));
         });
     }
     
     if (document.getElementById('right-bracket-sci')) {
         document.getElementById('right-bracket-sci').addEventListener('click', () => {
-            appendRightBracket();
+            appendBracket(')');
             addButtonPressAnimation(document.getElementById('right-bracket-sci'));
         });
     }
